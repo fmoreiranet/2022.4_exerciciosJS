@@ -35,7 +35,8 @@
                 <button class="btn btn-primary" type="button" onclick="calculo()">Calcular</button>
             </div>
         </form>
-        <div id="saidaTexto" class="mt-5"></div>
+        <div id="saidaTexto" class="mt-5 container">
+        </div>
     </section>
 </body>
 
@@ -46,9 +47,9 @@
         var largura = parseFloat(document.getElementById("largura").value);
         var comprimento = parseFloat(document.getElementById("comprimento").value);
 
-        var resultado = 0;//criar formula!!!
+        var resultado = ((largura * comprimento) * 18) / potenciaLamp;
 
         var saidaTexto = document.getElementById("saidaTexto");
-        saidaTexto.innerHTML = "Quantidade de lampadas: " + resultado;
+        saidaTexto.innerHTML = "<b>Quantidade de lampadas: " + resultado.toFixed(0) + "</b>";
     }
 </script>

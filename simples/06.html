@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="container">
+        <p>
+            6) Um motorista de táxi deseja calcular o rendimento de seu carro na praça. Sabendo-se que o preço do
+            combustível é de R$ 4,87, escreva um programa para ler: a marcação do odômetro (Km) no início do dia, a
+            marcação (Km) no final do dia, o número de litros de combustível gasto e o valor total (R$) recebido dos
+            passageiros. Calcular e escrever: a média do consumo em Km/L e o lucro (líquido) do dia.
+        </p>
+        <form action="">
+            <div class="mb-3">
+                <label for="odoInicio" class="form-label"> Qual o odômetro no início do dia (Km)?</label>
+                <input type="number" class="form-control" id="odoInicio" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="odoFinal" class="form-label">Qual o odômetro no final do dia (Km)? </label>
+                <input type="number" class="form-control" id="odoFinal" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="litros" class="form-label">Número de litros de combustível gasto (l)? </label>
+                <input type="number" class="form-control" id="litros" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="total" class="form-label">Valor total recebido (R$)? </label>
+                <input type="number" class="form-control" id="total" placeholder="">
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="button" onclick="calculo()">Calcular</button>
+            </div>
+        </form>
+        <div id="saidaTexto" class="mt-5">
+            ...
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    function calculo() {
+        let odoInicio = parseFloat(document.getElementById("odoInicio").value);
+        let odoFinal = parseFloat(document.getElementById("odoFinal").value);
+        let litros = parseFloat(document.getElementById("litros").value);
+        let total = parseFloat(document.getElementById("total").value);
+        let custoLitro = 4.87;
+
+        let media = (odoFinal - odoInicio) / litros;
+        let lucro = total - (litros * custoLitro);
+
+        let saidaTexto = document.getElementById("saidaTexto");
+        saidaTexto.innerHTML = "<p> Média do consumo em Km/L: <b>" + media.toFixed(2) + "</b></p>";
+        saidaTexto.innerHTML += "<p> Lucro (líquido) do dia: <b>" + lucro.toFixed(2) + "</b></p>";
+    }
+</script>
