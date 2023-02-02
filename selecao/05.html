@@ -35,11 +35,13 @@
 </html>
 <script>
     function verificar() {
-        let valor = parseFloat(document.getElementById("valor").value);
+        let valor = parseFloat((document.getElementById("valor")).value);
+        let abobrinha = document.getElementById("saidaTexto");
+
         if (valor >= 0) {
-            alert("positivo");
+            abobrinha.innerHTML = "positivo";
         } else {
-            alert("negativo");
+            abobrinha.innerHTML = "negativo";
         }
     }
 </script>
