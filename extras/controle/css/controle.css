@@ -5,3 +5,19 @@
     background-size: cover;
     border: solid 2px #222;
 }
+
+.tv-on {
+    background-image: url(../img/tela.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.tv-off {
+    background: none;
+}
+
+.format-text {
+    font-size: 16px;
+    color: #f11;
+    background-color: #222;
+}
