@@ -19,8 +19,16 @@
         </p>
         <form action="">
             <div class="mb-3">
-                <label for="watts" class="form-label">? </label>
-                <input type="number" class="form-control" id="watts" placeholder="">
+                <label for="comprimento" class="form-label">Comprimento? </label>
+                <input type="number" class="form-control" id="comprimento" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="largura" class="form-label">Largura? </label>
+                <input type="number" class="form-control" id="largura" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="altura" class="form-label">Altura? </label>
+                <input type="number" class="form-control" id="altura" placeholder="">
             </div>
 
             <div class="mb-3">
@@ -35,6 +43,13 @@
 </html>
 <script>
     function calculo() {
+        let comprimento = parseFloat(document.querySelector("#comprimento").value);
+        let largura = parseFloat(document.querySelector("#largura").value);
+        let altura = parseFloat(document.querySelector("#altura").value);
 
+        let areaParedes = ((comprimento * altura) + (largura * altura)) * 2 //em metros quadrados
+        let quantCaixas = areaParedes / 1.5 //total de area divido pela metragem da caixa
+
+        document.querySelector("#saidaTexto").innerHTML = "Quantidade de caixas: " + quantCaixas;
     }
 </script>
