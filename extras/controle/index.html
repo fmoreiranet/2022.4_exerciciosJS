@@ -15,11 +15,19 @@
     <section class="container d-flex">
         <div class="controle">
             <div class="controle-corpo">
-                <button type="button" onclick="power()">Ligar</button>
-                <button type="button" onclick="channelUp()">CH+</button>
-                <button type="button" onclick="channelDown()">CH-</button>
-                <button type="button">Vol+</button>
-                <button type="button">Vol-</button>
+                <div class="row">
+                    <button type="button" onclick="power()">Ligar</button>
+                </div>
+                <div class="row">
+                    <div class="col-6 d-flex flex-column">
+                        <button type="button" onclick="channelUp()">CH+</button>
+                        <button type="button" onclick="channelDown()">CH-</button>
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <button type="button">Vol+</button>
+                        <button type="button">Vol-</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="tv" id="tela">

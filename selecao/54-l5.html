@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/54-style.css">
+</head>
+
+<body>
+    <section class="container">
+        <p>
+            54) Fazer um algoritmo em pseudocodigo ler quatro valores referentes a quatro notas
+            escolares de um aluno e imprimir uma mensagem dizendo que o aluno foi aprovado, se o valor
+            da média escolar for maior ou igual a 7.0. Se o valor da média for menor que 7.0, solicitar a
+            nota de exame, somar com o valor da média e obter nova média. Se a nova média for maior ou
+            igual a 5, apresentar uma mensagem dizendo que o aluno foi aprovado em exame. Se o aluno
+            não foi aprovado, indicar uma mensagem informando esta condição. Apresentar junto com as
+            mensagens o valor da média do aluno, para qualquer condição.
+        </p>
+        <!-- Saida de Texto -->
+        <div id="saidaTexto" class="my-1"></div>
+
+        <!-- Formulario do Exame -->
+        <form action="" id="form-exame">
+            <div class="mb-3">
+                <label for="exame" class="form-label">Exame?</label>
+                <input type="number" class="form-control" id="exame" placeholder="">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="button" onclick="calculoNovaMedia()">Entrar Exame</button>
+            </div>
+        </form>
+
+        <!-- Formulario das Notas -->
+        <form action="">
+            <div class="mb-3">
+                <label for="nota1" class="form-label">Nota 1?</label>
+                <input type="number" class="form-control" id="nota1" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="nota2" class="form-label">Nota 2?</label>
+                <input type="number" class="form-control" id="nota2" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="nota3" class="form-label">Nota 3?</label>
+                <input type="number" class="form-control" id="nota3" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="nota4" class="form-label">Nota 4?</label>
+                <input type="number" class="form-control" id="nota4" placeholder="">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="button" onclick="alunoController()">Entrar</button>
+            </div>
+        </form>
+
+    </section>
+</body>
+
+</html>
+<script src="js/54-alunoController.js"></script>

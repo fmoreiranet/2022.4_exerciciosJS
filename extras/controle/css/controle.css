@@ -1,9 +1,10 @@
 .tv {
     height: 300px;
-    width: 700px;
+    width: 100%;
     /* background-image: url(../img/tela.jpg); */
     background-size: cover;
     border: solid 2px #222;
+    margin: 20px;
 }
 
 .tv-on {
