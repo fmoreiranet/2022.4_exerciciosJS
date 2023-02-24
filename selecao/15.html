@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="container">
+        <p>
+            15) Escreva um programa para ler o número de lados de um polígono regular e a medida do lado (em cm).
+            Calcular e imprimir o seguinte:
+            - Se o número de lados for igual a 3 escrever TRIANGULO e o valor do seu perímetro.
+            - Se o número de lados for igual a 4 escrever QUADRADO e o valor da sua área.
+            - Se o número de lados for igual a 5 escrever PENTÁGONO.
+            Observação: Considere que o usuário só informará os valores 3, 4 ou 5.
+        </p>
+        <form action="">
+            <div class="mb-3">
+                <label for="quantLado" class="form-label"> Qual o número de lados?</label>
+                <input type="number" class="form-control" id="quantLado" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="medidaLado" class="form-label"> Qual a medida do lado (em cm)?</label>
+                <input type="number" class="form-control" id="medidaLado" placeholder="">
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="button" onclick="poligonoController()">Verificar</button>
+            </div>
+        </form>
+
+        <div id="saidaTexto" class="mt-5">
+            ...
+        </div>
+
+    </section>
+</body>
+<script src="js/15.js"></script>
+
+</html>
