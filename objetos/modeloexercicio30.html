@@ -37,27 +37,26 @@
             >> Note que a observação só deverá ser impressa caso o aluno fique em exame.
         </p> -->
         <h2>Controle de notas</h2>
-        <form action="">
-            <form action="">
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome:</label>
-                    <input type="text" class="form-control" id="nome" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="avaliacao1" class="form-label">Avaliação 1</label>
-                    <input type="number" class="form-control" id="avaliacao1" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="avaliacao2" class="form-label">Avaliação 2</label>
-                    <input type="number" class="form-control" id="avaliacao2" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary" type="button" onclick="enviarAvaliacao()">Entrar</button>
-                </div>
-            </form>
-            <div id="saidaTexto" class="mt-5">
-                ...
+        <form action="" class="row g-3 align-items-end">
+            <div class="col">
+                <label for="nome" class="">Nome:</label>
+                <input type="text" class="form-control" id="nome" placeholder="">
             </div>
+            <div class="col">
+                <label for="avaliacao1" class="">Avaliação 1</label>
+                <input type="number" class="form-control" id="avaliacao1" placeholder="">
+            </div>
+            <div class="col">
+                <label for="avaliacao2" class="">Avaliação 2</label>
+                <input type="number" class="form-control" id="avaliacao2" placeholder="">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" type="button" onclick="enviarAvaliacao()">Entrar</button>
+            </div>
+        </form>
+        <div id="saidaTexto" class="mt-5">
+            ...
+        </div>
     </section>
 </body>
 
