@@ -1,14 +1,17 @@
-const aluno = {
-    nome: "",
-    matricula: "",
-    turma: "",
-    avaliacao1: 0,
-    avaliacao2: 0,
-    media: 0,
-    resultado: ""
-}
+const alunos = getAluno();
+montarTabela();
 
 function enviarAvaliacao() {
+    const aluno = {
+        nome: "",
+        matricula: "",
+        turma: "",
+        avaliacao1: 0,
+        avaliacao2: 0,
+        media: 0,
+        resultado: ""
+    }
+
     aluno.nome = document.getElementById("nome").value;
     //aluno.matricula = document.getElementById("matricula").value;
     //aluno.turma = document.getElementById("turma").value;
@@ -26,16 +29,9 @@ function enviarAvaliacao() {
     let resultado = montarResultado(media);
     aluno.resultado = resultado;
 
-    //document.getElementById("saidaTexto").innerHTML += "<tr><td>" + nome + "</td><td>" + resultado + "</td><td>" + media + "</td><tr>";
-    document.getElementById("saidaTexto").innerHTML += `<tr><td>${aluno.nome}</td><td>${aluno.resultado}</td><td>${aluno.media}</td><tr>`;
+    addAluno(aluno);
+    montarTabela();
 
-    // document.cookie = "aluno=" + JSON.stringify(aluno);
-    // document.cookie = "busca=" + aluno.nome;
-    // let dadoscookie = document.cookie;
-
-    localStorage.setItem("aluno", JSON.stringify(aluno));
-    let dadosAluno = JSON.parse(localStorage.getItem("aluno"));
-    console.log(dadosAluno);
 }
 
 function validarDados(aluno = {}) {
@@ -67,5 +63,32 @@ function montarResultado(mediaAluno = 0) {
     } else {
         return "Reprovado";
     }
-
 }
+
+function addAluno(aluno = {}) {
+    alunos.push(aluno);
+    localStorage.setItem("alunos", JSON.stringify(alunos));
+}
+
+function getAluno() {
+    let dadosAlunos = JSON.parse(localStorage.getItem("alunos"));
+    let resultado = [];
+    if (dadosAlunos != null) {
+        for (let index = 0; index < dadosAlunos.length; index++) {
+            let obj = dadosAlunos[index];
+            resultado.push(obj);
+        }
+    }
+    return resultado;
+}
+
+function montarTabela() {
+    let dadosAlunos = getAluno();
+    let saidaTexto = document.getElementById("saidaTexto");
+    saidaTexto.innerHTML = "";
+    for (let index = 0; index < dadosAlunos.length; index++) {
+        saidaTexto.innerHTML += `<tr><td>${dadosAlunos[index].nome}</td><td>${dadosAlunos[index].resultado}</td><td>${dadosAlunos[index].media}</td><tr>`;
+    }
+}
+
+//
