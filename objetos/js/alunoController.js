@@ -1,8 +1,9 @@
-const alunos = getAluno();
+const alunos = getAllAluno();
 montarTabela();
 
-function enviarAvaliacao() {
-    const aluno = {
+function enviarAvaliacao(update = false) {
+    const aluno = { //objetos ficam em chaves; Ex. const endereco = {}
+        id_aluno: 0,
         nome: "",
         matricula: "",
         turma: "",
@@ -17,6 +18,7 @@ function enviarAvaliacao() {
     //aluno.turma = document.getElementById("turma").value;
     aluno.avaliacao1 = parseFloat(document.getElementById("avaliacao1").value);
     aluno.avaliacao2 = parseFloat(document.getElementById("avaliacao2").value);
+    aluno.id_aluno = parseInt(document.getElementById("id_aluno").value);
 
     let errosEncontrados = validarDados(aluno);
     if (errosEncontrados != "") {
@@ -29,9 +31,14 @@ function enviarAvaliacao() {
     let resultado = montarResultado(media);
     aluno.resultado = resultado;
 
-    addAluno(aluno);
-    montarTabela();
+    if (Number.isNaN(aluno.id_aluno)) {
+        addAluno(aluno);
+    } else {
+        updateAluno(aluno);
+    }
 
+    montarTabela();
+    limparForm();
 }
 
 function validarDados(aluno = {}) {
@@ -65,30 +72,83 @@ function montarResultado(mediaAluno = 0) {
     }
 }
 
+function montarTabela() {
+    let dadosAlunos = getAllAluno();
+    let saidaTexto = document.getElementById("saidaTexto");
+    saidaTexto.innerHTML = "";
+    for (let index = 0; index < dadosAlunos.length; index++) {
+        saidaTexto.innerHTML += `
+        <tr>
+            <td>${dadosAlunos[index].id_aluno}</td>
+            <td>${dadosAlunos[index].nome}</td>
+            <td>${dadosAlunos[index].resultado}</td>
+            <td>${dadosAlunos[index].media}</td>
+            <td><img src="./img/trash-can-regular.svg" alt="" class="icon" onclick="deleteAluno(${index})"></td>
+            <td><img src="./img/pen-to-square-regular.svg" alt="" class="icon" onclick="getAluno(${index})"></td>
+        <tr>`;
+    }
+}
+
+function limparForm() {
+    document.getElementById("formCadadastro").reset()
+}
+
+
+//CRUD ------
 function addAluno(aluno = {}) {
+    aluno.id_aluno = new Date().getTime();
     alunos.push(aluno);
     localStorage.setItem("alunos", JSON.stringify(alunos));
 }
 
-function getAluno() {
+function getAllAluno() { //listAluno()
     let dadosAlunos = JSON.parse(localStorage.getItem("alunos"));
-    let resultado = [];
-    if (dadosAlunos != null) {
-        for (let index = 0; index < dadosAlunos.length; index++) {
-            let obj = dadosAlunos[index];
-            resultado.push(obj);
+    if (dadosAlunos == null) {
+        dadosAlunos = [];
+    }
+    return dadosAlunos;
+}
+
+function getAluno(index = 0) {
+    let dadosAlunos = getAllAluno();
+    //pegar e mostrar dadas Aluno
+    let aluno = dadosAlunos[index];
+    document.getElementById("nome").value = aluno.nome;
+    //document.getElementById("matricula").value = aluno.matricula;
+    //document.getElementById("turma").value aluno.turma;
+    document.getElementById("avaliacao1").value = aluno.avaliacao1;
+    document.getElementById("avaliacao2").value = aluno.avaliacao2;
+    document.getElementById("id_aluno").value = aluno.id_aluno;
+    return aluno;
+}
+
+function deleteAluno(index = 0) {
+    let dadosAlunos = getAllAluno();
+    let novoVetor = [];
+    let pergunta = `Deseja remover o aluno ${dadosAlunos[index].nome}?`;
+    if (confirm(pergunta)) {
+        //dadosAlunos.splice(index, 1);
+        let cont = 0;
+        for (let atual = 0; atual < (dadosAlunos.length - 1); atual++) {
+            if (atual != index) {
+                novoVetor[cont] = dadosAlunos[atual];
+                cont++;
+            }
+        }
+        // localStorage.clear();
+        localStorage.setItem("alunos", JSON.stringify(novoVetor));
+        montarTabela();
+    }
+    return novoVetor;
+}
+
+function updateAluno(aluno) {
+    let dadosAlunos = getAllAluno();
+    for (let index = 0; index < dadosAlunos.length; index++) {
+        if (dadosAlunos[index].id_aluno == aluno.id_aluno) {
+            dadosAlunos[index] = aluno;
         }
     }
-    return resultado;
+    localStorage.setItem("alunos", JSON.stringify(dadosAlunos));
+    document.getElementById("id_aluno").value = "";
 }
-
-function montarTabela() {
-    let dadosAlunos = getAluno();
-    let saidaTexto = document.getElementById("saidaTexto");
-    saidaTexto.innerHTML = "";
-    for (let index = 0; index < dadosAlunos.length; index++) {
-        saidaTexto.innerHTML += `<tr><td>${dadosAlunos[index].nome}</td><td>${dadosAlunos[index].resultado}</td><td>${dadosAlunos[index].media}</td><tr>`;
-    }
-}
-
-//

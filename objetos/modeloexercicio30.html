@@ -37,7 +37,7 @@
             >> Note que a observação só deverá ser impressa caso o aluno fique em exame.
         </p> -->
         <h2>Controle de notas</h2>
-        <form action="" class="row g-3 align-items-end">
+        <form action="" class="row g-3 align-items-end" id="formCadadastro">
             <div class="col">
                 <label for="nome" class="">Nome:</label>
                 <input type="text" class="form-control" id="nome" placeholder="">
@@ -53,15 +53,22 @@
             <div class="col">
                 <button class="btn btn-primary" type="button" onclick="enviarAvaliacao()">Entrar</button>
             </div>
+            <input type="hidden" id="id_aluno" value="">
             <div class="col">
                 <button class="btn btn-primary" type="button" onclick="montarTabela()">Listar</button>
             </div>
+            <!-- <div class="col">
+                <button class="btn btn-primary" type="reset">Limpar</button>
+            </div> -->
         </form>
         <table class="table">
             <tr>
+                <th>Id</th>
                 <th>Nome</th>
                 <th>Resultado</th>
                 <th>Media</th>
+                <th><img src="./img/trash-can-regular.svg" alt="" class="icon"></th>
+                <th><img src="./img/pen-to-square-regular.svg" alt="" class="icon"></th>
             </tr>
             <tbody id="saidaTexto">
             </tbody>
