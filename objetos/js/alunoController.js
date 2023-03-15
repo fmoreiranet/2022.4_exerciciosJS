@@ -2,26 +2,10 @@ const alunos = getAllAluno();
 montarTabela();
 
 function enviarAvaliacao(update = false) {
-    const aluno = { //objetos ficam em chaves; Ex. const endereco = {}
-        id_aluno: 0,
-        nome: "",
-        matricula: "",
-        turma: "",
-        avaliacao1: 0,
-        avaliacao2: 0,
-        media: 0,
-        resultado: ""
-    }
+    const aluno = montAluno();
 
-    aluno.nome = document.getElementById("nome").value;
-    //aluno.matricula = document.getElementById("matricula").value;
-    //aluno.turma = document.getElementById("turma").value;
-    aluno.avaliacao1 = parseFloat(document.getElementById("avaliacao1").value);
-    aluno.avaliacao2 = parseFloat(document.getElementById("avaliacao2").value);
-    aluno.id_aluno = parseInt(document.getElementById("id_aluno").value);
-
-    let errosEncontrados = validarDados(aluno);
-    if (errosEncontrados != "") {
+    //let errosEncontrados = validarDados(aluno);  
+    if (validarDados(aluno) != "") {
         alert(errosEncontrados);
         return
     }
@@ -93,8 +77,27 @@ function limparForm() {
     document.getElementById("formCadadastro").reset()
 }
 
+function montAluno() {
+    let alunoTemp = { //objetos ficam em chaves; Ex. const endereco = {}
+        id_aluno: 0,
+        nome: "",
+        matricula: "",
+        turma: "",
+        avaliacao1: 0,
+        avaliacao2: 0,
+        media: 0,
+        resultado: ""
+    }
+    alunoTemp.nome = document.getElementById("nome").value;
+    //alunoTemp.matricula = document.getElementById("matricula").value;
+    //alunoTemp.turma = document.getElementById("turma").value;
+    alunoTemp.avaliacao1 = parseFloat(document.getElementById("avaliacao1").value);
+    alunoTemp.avaliacao2 = parseFloat(document.getElementById("avaliacao2").value);
+    alunoTemp.id_aluno = parseInt(document.getElementById("id_aluno").value);
+    return alunoTemp;
+}
 
-//CRUD ------
+//CRUD ----------------------
 function addAluno(aluno = {}) {
     aluno.id_aluno = new Date().getTime();
     alunos.push(aluno);
@@ -151,4 +154,25 @@ function updateAluno(aluno) {
     }
     localStorage.setItem("alunos", JSON.stringify(dadosAlunos));
     document.getElementById("id_aluno").value = "";
+}
+
+//Busca CEP -------------------
+
+function verificaCEP() {
+    let cep = document.getElementById("cep").value;
+    let mostrarEndereco = document.getElementById("mostrarEndereco");
+    buscaCEP(cep, function (res) {
+        mostrarEndereco.innerHTML = res.logradouro;
+    });
+}
+
+function buscaCEP(cep = "", callback) {
+    let url = `https://viacep.com.br/ws/${cep}/json/`;
+    const http = new XMLHttpRequest();
+    http.onload = function (res) {
+        let endereco = JSON.parse(res.target.response);
+        return callback(endereco);
+    };
+    http.open("GET", url);
+    http.send();
 }
