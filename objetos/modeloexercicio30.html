@@ -73,19 +73,59 @@
             <tbody id="saidaTexto">
             </tbody>
         </table>
-        <div>
-            <div class="col">
-                <label for="cep" class="">CEP:</label>
-                <input type="text" class="form-control" id="cep" placeholder="">
+
+
+        <div class="spinner-border visually-hidden" role="status" id="loading">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+
+
+        <div class="row" id="endereco">
+            <div class="col-12">
+                <label for="cep" class="">CEP:
+                    <a class="" type="" onclick="verificaCEP()">Buscar</a>
+                </label>
+                <input type="text" class="form-control" id="cep" placeholder="" maxlength="8">
             </div>
+            <div class="col-6">
+                <label for="logradouro" class="">Endereço:</label>
+                <input type="text" class="form-control" id="logradouro" placeholder="">
+            </div>
+            <div class="col-6">
+                <label for="bairro" class="">Bairro:</label>
+                <input type="text" class="form-control" id="bairro" placeholder="">
+            </div>
+
+            <div class="col-6">
+                <label for="localidade" class="">Cidade:</label>
+                <input type="text" class="form-control" id="localidade" placeholder="">
+            </div>
+            <div class="col-6">
+                <label for="uf" class="">Estado:</label>
+                <input type="text" class="form-control" id="uf" placeholder="">
+            </div>
+
+            <div class="col-6">
+                <label for="numero" class="">Numero:</label>
+                <input type="text" class="form-control" id="numero" placeholder="">
+            </div>
+            <div class="col-6">
+                <label for="complento" class="">Complemento:</label>
+                <input type="text" class="form-control" id="complemento" placeholder="">
+            </div>
+
             <div class="col">
-                <button class="btn btn-primary" type="button" onclick="verificaCEP()">Buscar</button>
-            </div>''
+                <button class="btn btn-primary" type="button" onclick="">Cadastrar</button>
+            </div>
         </div>
 
         <div id="mostrarEndereco"></div>
     </section>
 </body>
-<script src="js/alunoController.js"></script>
+
+<!-- <script src="js/model/alunoObj.js"></script> -->
+<script src="js/model/AlunoClass.js"></script>
+<script src="js/services/alunoService.js"></script>
+<script src="js/controller/alunoController.js"></script>
 
 </html>
