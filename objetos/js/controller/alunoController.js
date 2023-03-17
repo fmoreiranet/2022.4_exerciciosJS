@@ -2,7 +2,7 @@ const alunos = getAllAluno();
 montarTabela();
 
 function enviarAvaliacao(update = false) {
-    const aluno = montAluno();
+    const aluno = mountAluno();
 
     let errosEncontrados = aluno.validarDados();
     if (errosEncontrados != "") {
@@ -49,7 +49,7 @@ function limparForm() {
     document.getElementById("formCadadastro").reset()
 }
 
-function montAluno() {
+function mountAluno() {
     // let alunoTemp = criarAluno();
     let alunoTemp = new Aluno();
     alunoTemp.nome = document.getElementById("nome").value;
@@ -70,6 +70,7 @@ function editFormAluno(index) {
     document.getElementById("avaliacao2").value = aluno.avaliacao2;
     document.getElementById("id_aluno").value = aluno.id_aluno;
 }
+
 
 //Busca CEP -------------------
 function verificaCEP() {
