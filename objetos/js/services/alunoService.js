@@ -15,7 +15,6 @@ function getAllAluno() { //listAluno()
 
 function getAluno(index = 0) {
     let dadosAlunos = getAllAluno();
-    //pegar e mostrar dadas Aluno
     let aluno = dadosAlunos[index];
     return aluno;
 }
