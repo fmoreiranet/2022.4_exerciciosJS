@@ -83,7 +83,7 @@ function verificaCEP() {
         return;
     }
     loadingShow();
-    buscaCEP(cep, function (res) {
+    buscaCEP2(cep, function (res) {
         if (res.erro) {
             loadingHide();
             alert("Cep não existe!")

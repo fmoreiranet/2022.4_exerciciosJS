@@ -11,7 +11,7 @@ class Aluno {
     }
     validarDados() {
         let erros = "";
-        if (this.none) {
+        if (this.nome) {
             erros += "Nome em branco.\n";
         }
         if (this.avaliacao1 < 0 || this.avaliacao1 > 10 || Number.isNaN(this.avaliacao1)) {
