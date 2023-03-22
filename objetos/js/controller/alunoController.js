@@ -1,7 +1,29 @@
 const alunos = getAllAluno();
-montarTabela();
 
-function enviarAvaliacao(update = false) {
+(function () {
+    montarTabela();
+    let btnEnvioDados = document.getElementById("enviar-dados")
+    //https://www.w3schools.com/jsref/met_element_addeventlistener.asp
+    btnEnvioDados.addEventListener("click", function () {
+        enviarAvaliacao();
+    });
+
+    document.getElementById("avaliacao2")
+        .addEventListener("keypress", (e) => {
+            if (e.key == "Enter") {
+                enviarAvaliacao();
+            }
+        });
+
+    let caixaCEP = document.getElementById("cep");
+    caixaCEP.addEventListener("keyup", (event) => {
+        if (caixaCEP.value.length >= 8) {
+            verificaCEP(caixaCEP.value);
+        }
+    });
+})();
+
+function enviarAvaliacao() {
     const aluno = mountAluno();
 
     let errosEncontrados = aluno.validarDados();
@@ -73,8 +95,8 @@ function editFormAluno(index) {
 
 
 //Busca CEP -------------------
-function verificaCEP() {
-    let cep = document.getElementById("cep").value;
+function verificaCEP(cep) {
+    //let cep = document.getElementById("cep").value;
     if (!cep) {
         alert("Cep obrigatório!");
         return;

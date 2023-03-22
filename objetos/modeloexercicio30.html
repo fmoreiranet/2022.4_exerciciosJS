@@ -51,15 +51,17 @@
                 <input type="number" class="form-control" id="avaliacao2" placeholder="">
             </div>
             <div class="col">
-                <button class="btn btn-primary" type="button" onclick="enviarAvaliacao()">Entrar</button>
+                <button class="btn btn-primary" type="button" id="enviar-dados">Entrar</button>
             </div>
             <input type="hidden" id="id_aluno" value="">
+            <!-- 
             <div class="col">
                 <button class="btn btn-primary" type="button" onclick="montarTabela()">Listar</button>
             </div>
-            <!-- <div class="col">
+            <div class="col">
                 <button class="btn btn-primary" type="reset">Limpar</button>
-            </div> -->
+            </div> 
+            -->
         </form>
         <table class="table">
             <tr>
@@ -83,7 +85,7 @@
         <div class="row" id="endereco">
             <div class="col-12">
                 <label for="cep" class="">CEP:
-                    <a class="" type="" onclick="verificaCEP()">Buscar</a>
+                    <!-- <a class="" type="" onclick="verificaCEP()">Buscar</a> -->
                 </label>
                 <input type="text" class="form-control" id="cep" placeholder="" maxlength="8">
             </div>

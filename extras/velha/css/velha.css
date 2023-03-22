@@ -1,0 +1,17 @@
+.col-4{
+    min-height: 80px;
+    border: solid 2px #222;
+    text-align: center;
+}
+
+.cruz{
+    content: "X";
+    font-size: 40px;
+    color: blue;
+}
+
+.circulo{
+    content: "O";
+    font-size: 40px;
+    color: green;
+}
